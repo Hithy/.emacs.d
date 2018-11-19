@@ -22,7 +22,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (multiple-cursors yasnippet autopair company helm use-package nyan-mode))))
+    (ggtags company-quickhelp benchmark-init neotree multiple-cursors autopair company helm use-package nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -36,11 +36,26 @@
 ;; mode & hook
 (desktop-save-mode t)
 (add-hook 'after-init-hook 'global-linum-mode)
+(tool-bar-mode -1)
 
 ;; config
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
 (setq auto-window-vscroll nil)
+
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-10"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))))
+ ((string-equal system-type "darwin") ; macOS
+  (when (member "Menlo" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Menlo"))
+    (add-to-list 'default-frame-alist '(font . "Menlo"))))
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-13"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13")))))
 
 ;; keybind
 (global-set-key (kbd "M-n") (quote scroll-up-line))
@@ -55,6 +70,24 @@
 
 
 ;; packages config
+(use-package benchmark-init
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+  )
+
+
+(if (string-equal system-type "gnu/linux")
+    (use-package ggtags
+      :ensure t
+      :init
+      (add-hook 'c-mode-common-hook
+		(lambda ()
+		  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+		    (ggtags-mode 1))))
+      )
+)
+
 (use-package autopair
   :ensure t
   :config
@@ -69,10 +102,9 @@
   (setq company-idle-delay 0)
   )
 
-(use-package yasnippet
+(use-package company-quickhelp
   :ensure t
-  :config
-  (yas-global-mode t)
+  :hook (company-mode . company-quickhelp-mode)
   )
 
 (use-package nyan-mode
