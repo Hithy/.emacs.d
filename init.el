@@ -22,7 +22,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (ggtags company-quickhelp benchmark-init neotree multiple-cursors autopair company helm use-package nyan-mode))))
+    (counsel ivy projectile ggtags company-quickhelp benchmark-init neotree multiple-cursors autopair company helm use-package nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -114,6 +114,14 @@
   (nyan-start-animation)
   )
 
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  )
+
 (use-package neotree
   :ensure t
   :bind(([f8] . neotree-toggle))
@@ -129,24 +137,29 @@
 	)
   )
 
-(use-package helm
+(use-package counsel
   :ensure t
-  :config
-  (setq helm-M-x-fuzzy-match t
-	helm-buffers-fuzzy-matching t
-	helm-recentf-fuzzy-match t
-	helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-	helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-	helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-	helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-	helm-ff-file-name-history-use-recentf t
-	helm-echo-input-in-header-line t
-	)
-  :bind (
-	 ("M-x" . helm-M-x)
-	 ("M-y" . helm-show-kill-ring)
-	 ("C-x C-f" . helm-find-files)
-	 ("C-x b" . helm-mini)
-	 ("C-c h o" . helm-occur)
-	 )
   )
+
+(use-package swiper
+  :ensure t
+  )
+
+(use-package ivy
+  :ensure t
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "[%d/%d] ")
+  :config
+  (ivy-mode 1)
+  :bind
+  ("C-s" . swiper)
+  ("M-x" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file)
+  ("<f1> f" . counsel-describe-function)
+  ("<f1> v" . counsel-describe-variable)
+  ("<f1> l" . counsel-find-library)
+  ("<f2> i" . counsel-info-lookup-symbol)
+  ("<f2> u" . counsel-unicode-char)
+  )
+
