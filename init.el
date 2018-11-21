@@ -19,10 +19,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark)))
- '(package-selected-packages
-   (quote
-    (multiple-cursors yasnippet autopair company helm use-package nyan-mode))))
+ '(custom-enabled-themes (quote (tango-dark))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,6 +40,21 @@
 (setq scroll-conservatively 10000)
 (setq auto-window-vscroll nil)
 
+;; font
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-12"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))))
+ ((string-equal system-type "darwin") ; macOS
+  (when (member "Menlo" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Menlo"))
+    (add-to-list 'default-frame-alist '(font . "Menlo"))))
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-12"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12")))))
+
 ;; keybind
 (global-set-key (kbd "M-n") (quote scroll-up-line))
 (global-set-key (kbd "M-p") (quote scroll-down-line))
@@ -53,8 +66,13 @@
        (lisp-interaction-mode))
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
 
-
 ;; packages config
+(use-package benchmark-init
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+  )
+
 (use-package autopair
   :ensure t
   :config
@@ -63,17 +81,21 @@
 
 (use-package company
   :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
+  :hook (after-init . company-mode)
   :config
   (setq company-idle-delay 0)
   )
 
-(use-package yasnippet
+(use-package company-quickhelp
   :ensure t
-  :config
-  (yas-global-mode t)
+  :hook (company-mode . company-quickhelp-mode)
   )
+
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config
+;;   (yas-global-mode t)
+;;   )
 
 (use-package nyan-mode
   :ensure t
