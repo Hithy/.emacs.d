@@ -2,9 +2,9 @@
 (setq package-list '(use-package))
 
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-                         ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
+			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+			 ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
 (package-initialize) ;; You might already have this line
 
 (unless package-archive-contents
@@ -22,7 +22,8 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (counsel ivy projectile ggtags company-quickhelp benchmark-init neotree multiple-cursors autopair company helm use-package nyan-mode))))
+    (eglot benchmark-init company-irony-c-headers company-irony counsel ivy projectile ggtags neotree multiple-cursors autopair company helm use-package nyan-mode)))
+    )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,37 +38,48 @@
 (desktop-save-mode t)
 (add-hook 'after-init-hook 'global-linum-mode)
 (tool-bar-mode -1)
+(setq indent-tabs-mode t)
+(setq c-basic-offset 8)
+(c-set-offset 'substatement-open 0)
 
 ;; config
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
 (setq auto-window-vscroll nil)
 
+;; font
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (when (member "DejaVu Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-10"))
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-13"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13"))))
  ((string-equal system-type "darwin") ; macOS
   (when (member "Menlo" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Menlo"))
     (add-to-list 'default-frame-alist '(font . "Menlo"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "DejaVu Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-13"))
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13")))))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-12"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12")))))
 
 ;; keybind
 (global-set-key (kbd "M-n") (quote scroll-up-line))
 (global-set-key (kbd "M-p") (quote scroll-down-line))
 
+
 (defun create-scratch-buffer nil
-       "create a scratch buffer"
-       (interactive)
-       (switch-to-buffer (get-buffer-create "*scratch*"))
-       (lisp-interaction-mode))
+  "create a scratch buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode))
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
 
+;; others
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; packages config
 (use-package benchmark-init
@@ -82,9 +94,9 @@
       :ensure t
       :init
       (add-hook 'c-mode-common-hook
-		(lambda ()
-		  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-		    (ggtags-mode 1))))
+             (lambda ()
+               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                 (ggtags-mode 1))))
       )
 )
 
@@ -96,28 +108,36 @@
 
 (use-package company
   :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
+  :hook (after-init . global-company-mode)
   :config
   (setq company-idle-delay 0)
   )
 
-(use-package company-quickhelp
-  :ensure t
-  :hook (company-mode . company-quickhelp-mode)
-  )
-
-(use-package nyan-mode
+(use-package company-irony
   :ensure t
   :config
-  (nyan-mode t)
-  (nyan-start-animation)
+  (add-to-list 'company-backends 'company-irony)
   )
+
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config
+;;   (yas-global-mode t)
+;;   )
+
+;; (use-package nyan-mode
+;;   :ensure t
+;;   :config
+;;   (nyan-mode t)
+;;   (nyan-start-animation)
+;;   )
 
 (use-package projectile
   :ensure t
   :config
   (projectile-mode +1)
+  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy)
   :bind-keymap
   ("C-c p" . projectile-command-map)
   )
@@ -162,4 +182,3 @@
   ("<f2> i" . counsel-info-lookup-symbol)
   ("<f2> u" . counsel-unicode-char)
   )
-
