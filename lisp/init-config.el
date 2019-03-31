@@ -4,6 +4,7 @@
 
 (desktop-save-mode)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; indent and tabs offset
 (setq-default indent-tabs-mode t)
