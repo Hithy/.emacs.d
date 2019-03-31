@@ -24,6 +24,10 @@
   (lisp-interaction-mode))
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
 
+;; wind move
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
 
 ;; (if (string-equal system-type "gnu/linux")
 ;;     (use-package ggtags
