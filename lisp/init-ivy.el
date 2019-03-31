@@ -4,8 +4,8 @@
 (require-package 'swiper)
 (require-package 'counsel)
 
-;; (setq-default ivy-use-virtual-buffers t)
-;; (setq-default ivy-count-format "[%d/%d] ")
+(setq-default ivy-use-virtual-buffers t)
+(setq-default ivy-count-format "[%d/%d] ")
 
 
 (add-hook 'after-init-hook 'ivy-mode)
