@@ -1,9 +1,8 @@
-(setq debug-on-error t)
+(package-initialize)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require 'init-packages)
-
 (require 'init-basic)
 (require 'init-appearance)
 (require 'init-config)
@@ -14,3 +13,4 @@
 
 (require 'init-ivy)
 (require 'init-project)
+
