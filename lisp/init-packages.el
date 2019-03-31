@@ -6,6 +6,7 @@
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 			 ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
+(package-initialize)
 
 (unless package-archive-contents
   (package-refresh-contents))
