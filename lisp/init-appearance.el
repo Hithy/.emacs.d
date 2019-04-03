@@ -16,6 +16,8 @@
     (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-12"))
     (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12")))))
 
+(require-package 'cnfonts)
+(add-hook 'after-init-hook 'cnfonts-enable)
 
 (require-package 'nyan-mode)
 (nyan-mode t)

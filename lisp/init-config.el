@@ -3,8 +3,9 @@
 (add-hook 'after-init-hook 'global-linum-mode)
 
 (desktop-save-mode)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
 
 ;; indent and tabs offset
 (setq-default indent-tabs-mode t)
@@ -28,6 +29,27 @@
 ;; wind move
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+
+;; yank and search string at point
+(require 'init-common)
+(global-set-key (kbd "s-k") (lambda ()
+			      (interactive)
+			      (kill-new (get-string-at-point))
+			      ))
+
+(global-set-key (kbd "s-s") (lambda ()
+			      (interactive)
+			      (swiper (get-string-at-point))
+			      ))
+
+(global-set-key (kbd "s-h") (lambda ()
+			      (interactive)
+			      (highlight-word-at-point)
+			      ))
+
+
+
+
 
 
 ;; (if (string-equal system-type "gnu/linux")
