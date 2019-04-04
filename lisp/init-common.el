@@ -8,7 +8,11 @@
     )
   )
 
-(setq current-highlight-regexp nil)
+(setq-default current-highlight-regexp nil)
+
+(add-to-list 'after-change-major-mode-hook (lambda ()
+					     (make-local-variable 'current-highlight-regexp)
+					     ))
 
 (defun highlight-word-at-point()
   
