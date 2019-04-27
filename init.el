@@ -11,10 +11,10 @@
 (require 'init-irony)
 (require 'init-autopair)
 (require 'init-multi-cursor)
+(require 'init-yasnippet)
 
 (require 'init-ivy)
 (require 'init-project)
 
 (require 'init-grep)
 (require 'init-markdown)
-
