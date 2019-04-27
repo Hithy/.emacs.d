@@ -3,7 +3,7 @@
 * Install
 
  #+BEGIN_SRC shell
-   git clone https://github.com/hithy/.emacs.d ~/
+   git clone https://github.com/hithy/.emacs.d ~/.emacs.d
  #+END_SRC
 
 * Package list 
