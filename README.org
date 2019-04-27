@@ -1,0 +1,32 @@
+#+STARTUP: showall
+
+* Install
+
+ #+BEGIN_SRC shell
+   git clone https://github.com/hithy/.emacs.d ~/
+ #+END_SRC
+
+* Package list 
+  - company
+  - cnfonts
+  - ivy
+  - autopair
+  - nyan
+  - irony
+  - yasnippet
+  - markdown
+  - multiple-cursors
+  - .....
+
+* Appearance
+  - tango-dark
+  - Dejavu Sans Mono
+
+* Links
+  - [[https://www.ya0db9.com][Whosays]]
+
+
+
+
+
+
