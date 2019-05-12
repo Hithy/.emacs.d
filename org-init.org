@@ -1,0 +1,36 @@
+#+STARTUP: overview
+
+
+* rest
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (require 'init-common)
+  (require 'init-packages)
+  (require 'init-basic)
+  (require 'init-appearance)
+  (require 'init-config)
+  (require 'init-company)
+  (require 'init-irony)
+  (require 'init-autopair)
+  (require 'init-multi-cursor)
+  (require 'init-yasnippet)
+
+  (require 'init-ivy)
+  (require 'init-project)
+  (require 'init-org)
+
+  (require 'init-grep)
+  
+#+END_SRC
+
+* markdown
+
+bind .markdown and .md file with markdown-mode
+
+and README.md with gfm-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (require 'init-markdown)
+#+END_SRC
+
+
