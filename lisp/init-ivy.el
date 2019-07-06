@@ -3,9 +3,12 @@
 (require-package 'ivy)
 (require-package 'swiper)
 (require-package 'counsel)
+(require-package 'ivy-xref)
 
 (setq-default ivy-use-virtual-buffers t)
 (setq-default ivy-count-format "[%d/%d] ")
+
+(setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
 
 
 (add-hook 'after-init-hook 'ivy-mode)

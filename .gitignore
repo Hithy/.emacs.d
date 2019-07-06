@@ -52,3 +52,8 @@ site-lisp/package/
 /forge-database.sqlite
 /transient
 org-init.el
+cnfonts
+.lsp-session-v1
+irony
+mspyls
+*.cache

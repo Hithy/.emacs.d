@@ -51,14 +51,10 @@
  ((string-equal system-type "darwin") ; macOS
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'alt)
+
+  (exec-path-from-shell-initialize)  
   )
  )
-
-
-
-
-
-
 
 ;; (if (string-equal system-type "gnu/linux")
 ;;     (use-package ggtags
