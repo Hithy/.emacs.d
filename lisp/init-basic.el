@@ -10,3 +10,5 @@
 (require-package 'exec-path-from-shell)
 (global-wakatime-mode)
 (custom-set-variables '(wakatime-api-key "05f6075d-e15c-4381-af98-c1150505228c"))
+
+(require-package 'ripgrep)
