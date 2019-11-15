@@ -3,8 +3,6 @@
 (add-hook 'after-init-hook 'global-linum-mode)
 
 (desktop-save-mode)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
 (menu-bar-mode 0)
 
 ;; indent and tabs offset
