@@ -23,17 +23,3 @@
 (require 'init-markdown)
 
 (require 'init-misc)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(ripgrep telega cmake-mode pdf-tools racket-mode highlight-symbol wakatime-mode irony markdown-mode projectile counsel swiper ivy yasnippet-snippets yasnippet multiple-cursors autopair company-irony company-quickhelp company nyan-mode cnfonts neotree benchmark-init))
- '(wakatime-api-key "05f6075d-e15c-4381-af98-c1150505228c"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
