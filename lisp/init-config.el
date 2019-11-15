@@ -47,6 +47,14 @@
 			      (highlight-word-at-point)
 			      ))
 
+(cond
+ ((string-equal system-type "darwin") ; macOS
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'alt)
+  )
+ )
+
+
 
 
 
