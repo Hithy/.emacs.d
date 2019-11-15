@@ -1,5 +1,3 @@
-(package-initialize)
-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require 'init-common)
@@ -8,13 +6,16 @@
 (require 'init-appearance)
 (require 'init-config)
 (require 'init-company)
-(require 'init-irony)
+(require 'init-ccls)
+;; (require 'init-irony)
 (require 'init-autopair)
 (require 'init-multi-cursor)
 (require 'init-yasnippet)
+(require 'init-python)
 
 (require 'init-ivy)
 (require 'init-project)
+(require 'init-lsp)
 
 (require 'init-grep)
 (require 'init-markdown)

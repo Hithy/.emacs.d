@@ -7,4 +7,6 @@
 (require-package 'neotree)
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 
+(require-package 'ripgrep)
+
 
