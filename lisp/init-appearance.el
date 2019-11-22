@@ -1,6 +1,6 @@
 (provide 'init-appearance)
 
-(load-theme 'tango-dark)
+;; (load-theme 'tango-dark)
 ;; font
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
