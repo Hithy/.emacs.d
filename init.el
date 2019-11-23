@@ -15,6 +15,7 @@
 (require 'init-yasnippet)
 (require 'init-python)
 (require 'init-dev-common)
+(require 'init-doom-theme)
 
 (require 'init-ivy)
 (require 'init-project)

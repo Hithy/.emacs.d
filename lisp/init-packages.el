@@ -6,6 +6,11 @@
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 			 ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
+(setq package-archive-priorities
+         '(("melpa-stable" . 20)
+           ("org" . 10)
+           ("gnu" . 10)
+           ("melpa" . 5)))
 (package-initialize)
 
 (unless package-archive-contents
