@@ -1,6 +1,0 @@
-(provide 'init-doom-theme)
-
-
-
-
-
