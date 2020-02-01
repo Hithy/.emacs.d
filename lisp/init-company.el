@@ -9,6 +9,5 @@
 (after-load 'company
   (setq-default company-idle-delay 0)
   (company-quickhelp-mode)
-  ;;(push 'company-lsp company-backends)
+  (push 'company-lsp company-backends)
   )
-

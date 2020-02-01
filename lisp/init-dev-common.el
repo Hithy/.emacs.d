@@ -1,6 +1,9 @@
 (provide 'init-dev-common)
 
-(require-package 'ag)
-
-(global-set-key (kbd "M-s f") 'counsel-ag)
 (global-set-key (kbd "C-c c") 'recompile)
+
+(when (executable-find "rg")
+  (require-package 'ripgrep)
+  )
+
+(require-package 'flycheck)

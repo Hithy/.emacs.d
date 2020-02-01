@@ -1,30 +1,16 @@
 #+STARTUP: showall
 
-* Install
+* Dependencies
+  - [[https://github.com/BurntSushi/ripgrep][ripgrep]]: text search
+  - [[https://github.com/MaskRay/ccls][ccls]]: c++ completion
 
+* Install
  #+BEGIN_SRC shell
    git clone https://github.com/hithy/.emacs.d ~/.emacs.d
  #+END_SRC
 
-* Package list 
-  - company
-  - cnfonts
-  - ivy
-  - autopair
-  - nyan
-  - irony
-  - yasnippet
-  - markdown
-  - multiple-cursors
-  - .....
-
-* Appearance
-  - tango-dark
-  - Dejavu Sans Mono
-
 * Links
   - [[https://www.ya0db9.com][Whosays]]
-
 
 
 

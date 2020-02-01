@@ -1,24 +1,24 @@
 (provide 'init-appearance)
 
-;; (load-theme 'tango-dark)
-;; font
-(cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "DejaVu Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-13"))
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13"))))
- ((string-equal system-type "darwin") ; macOS
-  (when (member "Menlo" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Menlo"))
-    (add-to-list 'default-frame-alist '(font . "Menlo"))))
- ((string-equal system-type "gnu/linux") ; linux
-  (when (member "DejaVu Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-12"))
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12")))))
-
+(require-package 'all-the-icons)
 (require-package 'cnfonts)
 (add-hook 'after-init-hook 'cnfonts-enable)
+(add-hook 'cnfonts-set-font-finish-hook
+	  (lambda (fontsize-list)
+	    (set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'append)
+	    (set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'append)
+	    (set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'append)
+	    (set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'append)
+	    (set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'append)
+	    (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)))
 
 (require-package 'nyan-mode)
 (nyan-mode t)
 (nyan-start-animation)
+
+;; doom mode line and themes
+(require-package 'doom-modeline)
+(setq doom-modeline-buffer-file-name-style 'relative-to-project)
+(doom-modeline-mode 1)
+(require-package 'doom-themes)
+(load-theme 'doom-vibrant t)

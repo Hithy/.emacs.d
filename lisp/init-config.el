@@ -15,13 +15,6 @@
 (setq auto-window-vscroll nil)
 (global-set-key (kbd "M-n") (quote scroll-up-line))
 (global-set-key (kbd "M-p") (quote scroll-down-line))
-
-
-(defun create-scratch-buffer nil
-  "create a scratch buffer"
-  (interactive)
-  (switch-to-buffer (get-buffer-create "*scratch*"))
-  (lisp-interaction-mode))
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
 
 ;; wind move
@@ -45,24 +38,9 @@
 			      (highlight-word-at-point)
 			      ))
 
-(cond
- ((string-equal system-type "darwin") ; macOS
+(when *is-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'alt)
-
-  (exec-path-from-shell-initialize)  
+  (exec-path-from-shell-initialize)
   )
- )
-
-;; (if (string-equal system-type "gnu/linux")
-;;     (use-package ggtags
-;;       :ensure t
-;;       :init
-;;       (add-hook 'c-mode-common-hook
-;;              (lambda ()
-;;                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-;;                  (ggtags-mode 1))))
-;;       )
-;; )
-
 
