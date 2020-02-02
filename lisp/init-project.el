@@ -4,6 +4,7 @@
 
 (add-hook 'after-init-hook 'projectile-mode)
 
+(setq projectile-indexing-method 'alien)
 (setq-default projectile-enable-caching t)
 (setq-default projectile-completion-system 'ivy)
 
