@@ -1,10 +1,11 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (require 'init-env)
 
 (require 'init-packages)
-(require 'init-common)
-(require 'init-basic)
+(require 'init-common) ;; common func
+(require 'init-basic) ;; profiler
 (require 'init-appearance)
 (require 'init-config)
 
@@ -24,3 +25,6 @@
 (require 'init-org)
 
 (require 'init-misc)
+
+(when (file-exists-p custom-file)
+  (load custom-file))

@@ -20,11 +20,13 @@
   (package-installed-p package)
   (package-install package))
 
-(let ((normal-gc-cons-threshold (* 20 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024)))
+(let ((normal-gc-cons-threshold (* 40 1024 1024))
+      (init-gc-cons-threshold (* 128 1024 1024))
+      )
   (setq gc-cons-threshold init-gc-cons-threshold)
+  (setq garbage-collection-messages t)
   (add-hook 'emacs-startup-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 (if (fboundp 'with-eval-after-load)
     (defalias 'after-load 'with-eval-after-load)
@@ -33,3 +35,4 @@
     (declare (indent defun))
     `(eval-after-load ,feature
        '(progn ,@body))))
+

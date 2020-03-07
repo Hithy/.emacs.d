@@ -8,6 +8,7 @@
 
 (after-load 'company
   (setq-default company-idle-delay 0)
+  (setq company-lsp-cache-candidates 'auto)
   (company-quickhelp-mode)
   (push 'company-lsp company-backends)
   )

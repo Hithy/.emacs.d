@@ -1,6 +1,6 @@
 (provide 'init-lsp)
 
 (require-package 'lsp-mode)
-(require-package 'lsp-ui)
+;; (require-package 'lsp-ui)
 
-;;(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
