@@ -10,7 +10,7 @@
          '(("melpa-stable" . 20)
            ("org" . 10)
            ("gnu" . 10)
-           ("melpa" . 5)))
+           ("melpa" . 50)))
 (package-initialize)
 
 (unless package-archive-contents
@@ -27,6 +27,9 @@
   (setq garbage-collection-messages t)
   (add-hook 'emacs-startup-hook
 	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+
+;; 只要内存大，要什么垃圾回收←_←
+;; (setq gc-cons-threshold (* 10 1024 1024 1024))
 
 (if (fboundp 'with-eval-after-load)
     (defalias 'after-load 'with-eval-after-load)

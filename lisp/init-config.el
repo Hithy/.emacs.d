@@ -1,7 +1,12 @@
 (provide 'init-config)
 
-(desktop-save-mode)
-(setq desktop-restore-eager 5)
+(require-package 'dashboard)
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)))
+
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
@@ -16,6 +21,7 @@
 (setq auto-window-vscroll nil)
 (global-set-key (kbd "M-n") (quote scroll-up-line))
 (global-set-key (kbd "M-p") (quote scroll-down-line))
+
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
 
 ;; wind move
@@ -25,6 +31,7 @@
 ;; yank and search string at point
 (require 'init-common)
 (global-set-key (kbd "C-c f") 'swiper-isearch-thing-at-point)
+(global-set-key (kbd "C-c <SPC>") 'set-mark-command)
 
 (global-set-key (kbd "s-k") (lambda ()
 			      (interactive)
@@ -43,7 +50,7 @@
 
 (when *is-mac*
   (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'alt)
+  (setq mac-option-modifier 'super)
   (exec-path-from-shell-initialize)
   )
 
