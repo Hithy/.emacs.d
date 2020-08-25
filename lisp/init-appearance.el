@@ -18,9 +18,9 @@
 ;; 	    (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)
 ;; 	    ))
 
-(require-package 'nyan-mode)
-(nyan-mode t)
-(nyan-start-animation)
+;; (require-package 'nyan-mode)
+;; (nyan-mode t)
+;; (nyan-start-animation)
 
 ;; doom mode line and themes
 (require-package 'doom-modeline)

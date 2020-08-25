@@ -1,6 +1,6 @@
 (provide 'init-dev-cxx)
 
-(when (executable-find "ccls")
+(when (my-executable-find "ccls")
   (require-package 'ccls)
 
   (defun load-ccls ()
