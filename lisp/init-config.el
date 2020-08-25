@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (provide 'init-config)
 
 (require-package 'dashboard)
@@ -23,6 +24,18 @@
 (global-set-key (kbd "M-p") (quote scroll-down-line))
 
 (global-set-key (kbd "C-c n") 'create-scratch-buffer)
+
+(defun bind-tab-switch-keys (count)
+  (when (> count 0)
+    (global-set-key (kbd (format "M-%d" count)) (lambda ()
+                                                  (interactive)
+                                                  (tab-bar-select-tab count)
+                                                  ))
+    (bind-tab-switch-keys (- count 1))
+    )
+  )
+
+(bind-tab-switch-keys 6)
 
 ;; wind move
 (when (fboundp 'windmove-default-keybindings)

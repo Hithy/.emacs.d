@@ -2,10 +2,10 @@
 (provide 'init-packages)
 
 (require 'package)
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-			 ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")))
+(setq package-archives '(("gnu"   . "https://mirrors.163.com/elpa/gnu/")
+			 ("melpa" . "https://mirrors.163.com/elpa/melpa/")
+			 ("org" . "https://mirrors.163.com/elpa/org/")
+			 ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")))
 (setq package-archive-priorities
          '(("melpa-stable" . 20)
            ("org" . 10)
@@ -20,16 +20,8 @@
   (package-installed-p package)
   (package-install package))
 
-(let ((normal-gc-cons-threshold (* 40 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024))
-      )
-  (setq gc-cons-threshold init-gc-cons-threshold)
-  (setq garbage-collection-messages t)
-  (add-hook 'emacs-startup-hook
-	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
-
 ;; 只要内存大，要什么垃圾回收←_←
-;; (setq gc-cons-threshold (* 10 1024 1024 1024))
+(setq gc-cons-threshold (* 10 1024 1024))
 
 (if (fboundp 'with-eval-after-load)
     (defalias 'after-load 'with-eval-after-load)

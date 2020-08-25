@@ -2,7 +2,7 @@
 
 (global-set-key (kbd "C-c c") 'recompile)
 
-(when (executable-find "rg")
+(when (my-executable-find "rg")
   (require-package 'ripgrep)
   )
 

@@ -36,7 +36,7 @@
     )
   )
 
-(defun executable-find (command)
+(defun my-executable-find (command)
   "Search for COMMAND in `exec-path' and return the absolute file name.
 Return nil if COMMAND is not found anywhere in `exec-path'."
   ;; Use 1 rather than file-executable-p to better match the behavior of
