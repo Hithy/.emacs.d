@@ -3,10 +3,10 @@
 
 ;; (require-package 'lsp-python-ms)
 ;; (require 'lsp-python-ms)
+(require-package 'lsp-pyright)
 (require 'lsp-pyright)
 
 (setq init-python-ignore-regxp '("share_protocol"))
-
 (defun reduce_nil (a b)
   (if (and (null a) (null b))
       nil
@@ -26,7 +26,7 @@
 (defun python-dev-init ()
     (setq-local indent-tabs-mode t)
     (setq python-indent-offset 8)
-    
+
     (when (check_python_file_need_lsp buffer-file-name)
       (setq lsp-pyright-extra-paths (vector "./script" "./data" "./pycharm/stubs" "./logic"))
       (setq-local lsp-enable-snippet nil)
