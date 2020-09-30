@@ -9,7 +9,9 @@
                         (projects . 5)))
 
 (tool-bar-mode 0)
-(scroll-bar-mode 0)
+(when (display-graphic-p)
+  (scroll-bar-mode 0)
+  )
 (menu-bar-mode 0)
 
 ;; indent and tabs offset
