@@ -6,7 +6,7 @@
   (defun load-ccls ()
     (require 'ccls)
     (setq-local indent-tabs-mode t)
-    (setq-local c-basic-offset 8)
+    (setq-local c-basic-offset 4)
     (lsp)
     )
 
