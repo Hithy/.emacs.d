@@ -63,6 +63,23 @@
 			      (highlight-word-at-point)
 			      ))
 
+
+;; keybindings config for tty env in iTerm2
+;; https://www.emacswiki.org/emacs/iTerm2
+;;
+(defun create-iterm2-map (&optional frame)
+  (cl-loop for char from ?a to ?z
+           do (define-key input-decode-map (format "\e[1;P%c" char) (kbd (format "M-%c" char))))
+  (cl-loop for char from ?1 to ?9
+           do (define-key input-decode-map (format "\e[1;P%c" char) (kbd (format "M-%c" char))))
+  )
+
+(create-iterm2-map)
+
+(add-hook 'tty-setup-hook #'create-iterm2-map)
+;;
+;;
+
 (when *is-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)

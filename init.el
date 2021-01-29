@@ -21,6 +21,7 @@
 (require 'init-company)
 (require 'init-lsp)
 (require 'init-dev-cxx)
+(require 'init-dev-go)
 (require 'init-python)
 (require 'init-org)
 
