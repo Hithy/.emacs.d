@@ -1,6 +1,3 @@
 (provide 'init-autopair)
 
-(require-package 'autopair)
-
-(add-hook 'after-init-hook 'autopair-global-mode)
-
+(show-paren-mode 1)
