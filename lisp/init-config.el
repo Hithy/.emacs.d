@@ -13,6 +13,7 @@
   (scroll-bar-mode 0)
   )
 (menu-bar-mode 0)
+(show-paren-mode t)
 
 ;; indent and tabs offset
 (setq-default indent-tabs-mode nil)
