@@ -25,6 +25,8 @@
 (require 'init-python)
 (require 'init-org)
 
+(require 'init-elfeed)
+
 (require 'init-misc)
 
 (when (file-exists-p custom-file)
