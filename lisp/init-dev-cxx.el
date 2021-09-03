@@ -26,14 +26,12 @@
 		        (file-exists-p "Makefile"))
               (let ((output-file-name (concat (file-name-sans-extension buffer-file-name) ".out")))
                 (set (make-local-variable 'compile-command)
-		     (concat "clang++ -std=c++17 \""
-                             buffer-file-name
-                             "\" -o \""
-                             output-file-name
-                             "\" && \""
-                             output-file-name
-                             "\""
-                             ))))))
+		     (concat "clang++ -std=c++17 "
+                             (prin1-to-string buffer-file-name)
+                             " -o "
+                             (prin1-to-string output-file-name)
+                             " && "
+                             (prin1-to-string output-file-name)))))))
 
 (setq lsp-prefer-flymake nil)
 (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
