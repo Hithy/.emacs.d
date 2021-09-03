@@ -30,7 +30,7 @@
                              buffer-file-name
                              " -o "
                              output-file-name
-                             "; "
+                             " && "
                              output-file-name))))))
 
 (setq lsp-prefer-flymake nil)
