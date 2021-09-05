@@ -37,7 +37,7 @@
 
 (defun gen_cmake_compile_command (target)
   (concat
-   (if (file-exists-p (concat (vc-root-dir) "build_ninja"))
+   (if (my-executable-find "ninja")
        "cmake --build build_ninja --target "
      "cmake --build build --target "
      )
