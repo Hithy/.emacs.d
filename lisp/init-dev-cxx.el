@@ -35,6 +35,16 @@
     )
   )
 
+(defun gen_cmake_move_cdb_file_command ()
+  (if (my-executable-find "ninja")
+      "cmake -E copy_if_different build_ninja/compile_commands.json compile_commands.json"
+    (if (not *is-windows*)
+        "cmake -E copy_if_different build/compile_commands.json compile_commands.json"
+      ""
+      )
+    )
+  )
+
 (defun gen_cmake_compile_command (target)
   (concat
    (if (my-executable-find "ninja")
@@ -46,15 +56,15 @@
   )
 
 (defun gen_cmake_run_command ()
-  (message "gen cmake run command")
-  (concat "cd "
-          (vc-root-dir)
-          " && "
-          (gen_cmake_gen_proj_command)
-          " && "
-          (gen_cmake_compile_command "all")
-          " && "
-          (gen_cmake_compile_command "run")
+  (concat "cd " (vc-root-dir)
+          " && " (gen_cmake_gen_proj_command)
+          (let ((cdb_command (gen_cmake_move_cdb_file_command)))
+            (if (eq cdb_command "")
+                ""
+              (concat " && " cdb_command))
+            )
+          " && " (gen_cmake_compile_command "all")
+          " && " (gen_cmake_compile_command "run")
           )
   )
 
