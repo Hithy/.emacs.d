@@ -8,4 +8,5 @@
       '("https://manateelazycat.github.io/feed.xml"
         "http://www.gcores.com/rss"
         "http://www.yystv.cn/rss/feed"
+        "https://dontpanic.blog/feed/"
         ))

@@ -64,6 +64,8 @@
 			      (highlight-word-at-point)
 			      ))
 
+(define-key global-map (kbd "C-c t") telega-prefix-map)
+
 
 ;; keybindings config for tty env in iTerm2
 ;; https://www.emacswiki.org/emacs/iTerm2
