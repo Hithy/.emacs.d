@@ -1,21 +1,18 @@
 (provide 'init-dev-cxx)
 
-(when (my-executable-find "ccls")
-  (require-package 'ccls)
-
-  (defun load-ccls ()
-    (require 'ccls)
+(when (my-executable-find "clangd")
+  (defun load-lsp ()
     ;; (setq-local indent-tabs-mode t)
     ;; (setq-local c-basic-offset 4)
     (lsp)
     )
 
-  (add-hook 'c++-mode-hook 'load-ccls)
-  (add-hook 'c-mode-hook 'load-ccls)
-  (add-hook 'objc-mode-hook 'load-ccls)
+  (add-hook 'c++-mode-hook 'load-lsp)
+  (add-hook 'c-mode-hook 'load-lsp)
+  (add-hook 'objc-mode-hook 'load-lsp)
   )
 
-(require-package 'google-c-style)
+;; (require-package 'google-c-style)
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
