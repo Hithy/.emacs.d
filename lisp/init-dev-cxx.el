@@ -13,8 +13,7 @@
   )
 
 ;; (require-package 'google-c-style)
-
-(add-hook 'c-mode-common-hook 'google-set-c-style)
+;; (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (defun is_cmake_project ()
   (let ((project-root (vc-root-dir)))
