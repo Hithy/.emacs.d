@@ -2,8 +2,9 @@
 
 (when (my-executable-find "clangd")
   (defun load-lsp ()
-    ;; (setq-local indent-tabs-mode t)
-    ;; (setq-local c-basic-offset 4)
+    (setq-local indent-tabs-mode t)
+    (setq-local c-basic-offset 4)
+    (setq-local tab-width 4)
     (lsp)
     )
 
@@ -11,6 +12,9 @@
   (add-hook 'c-mode-hook 'load-lsp)
   (add-hook 'objc-mode-hook 'load-lsp)
   )
+
+(require-package 'clang-format)
+(add-hook 'c-mode-common-hook 'clang-format-style)
 
 ;; (require-package 'google-c-style)
 ;; (add-hook 'c-mode-common-hook 'google-set-c-style)
