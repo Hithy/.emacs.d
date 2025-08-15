@@ -1,6 +1,6 @@
 (provide 'init-appearance)
 
-(require-package 'all-the-icons)
+(require-package 'nerd-icons)
 
 (require-package 'unicode-fonts)
 (require 'unicode-fonts)
