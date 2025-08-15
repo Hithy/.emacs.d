@@ -71,7 +71,7 @@
 (defun gen_normal_run_command ()
   (message "gen normal run command")
   (let ((output-file-name (concat (file-name-sans-extension buffer-file-name) ".out")))
-    (concat "clang++ -std=c++17 "
+    (concat "clang++ -std=c++20 "
             (prin1-to-string buffer-file-name)
             " -o "
             (prin1-to-string output-file-name)
